@@ -6,7 +6,8 @@ import re
 
 def format(commit):
     tmpl = "\033[1;31m{}\033[0m - {} \033[0;32m({} {}) \033[0;34m<{}>\033[0m"
-    return tmpl.format(commit['rev'], commit['msg'], commit['date'], commit['time'], commit['author'])
+    return tmpl.format(commit['rev'], commit['msg'], commit['date'],
+            commit['time'], commit['author'])
 
 
 def main():
@@ -19,7 +20,7 @@ def main():
                 'author': detail[1],
                 'date': detail[2].split(' ')[0],
                 'time': detail[2].split(' ')[1]}
-        elif not re.search('^-*$', line) and not 'msg' in commit:
+        elif not re.search('^-*$', line) and 'msg' not in commit:
             commit['msg'] = line[0:line.find('\n')]
         elif re.search('^-+$', line) and 'rev' in commit:
             print(format(commit))
@@ -29,7 +30,3 @@ def main():
 if __name__ == '__main__':
     if not sys.stdin.isatty():
         main()
-    else:
-        print('aa')
-
-
