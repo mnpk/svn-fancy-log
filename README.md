@@ -9,6 +9,9 @@ Fancy one-line logs for subversion cli.
 
 
 ## Install
+
+- python required
+- run following script
 ```
 wget https://raw.githubusercontent.com/mnpk/svn-fancy-log/master/svn-fancy-log -O /usr/local/bin/svn-fancy-log && chmod +x /usr/local/bin/svn-fancy-log
 ```
